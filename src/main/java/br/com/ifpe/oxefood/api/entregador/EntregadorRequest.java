@@ -5,48 +5,55 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.ifpe.oxefood.modelo.entregador.Entregador;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class EntregadorRequest {
-    private String nome;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataNascimento;
+   private String nome;
 
-    
-    private String cpf;
+   @JsonFormat(pattern = "dd/MM/yyyy")
+   private LocalDate dataNascimento;
 
-    private String rg;
+   private String cpf;
 
-    private int qtdEntregasRealizadas;
+   private String foneCelular;
 
-    private String foneCelular;
+   private String foneFixo;
 
-    private String foneFixo;
+   private String rg;
 
-    private double valorFrete;
+   private int qtdEntregasRealizadas;
 
-    private String enderecoRua;
+   private double valorFrete;
 
-    private String enderecoNumero;
+   private String enderecoRua;
 
-    private String enderecoBairro;
+   private String enderecoNumero;
 
-    private String enderecoCidade;
+   private String enderecoBairro;
 
-    private String enderecoCep;
+   private String enderecoCidade;
 
-    private String enderecoUf;
+   private String enderecoCep;
 
-    private String  enderecoComplemento;
+   private String enderecoUf;
 
-    private boolean ativo;
+   private String enderecoComplemento;
 
-    
+   private Boolean ativo;
 
-    public Entregador build(){
-        return Entregador.builder()
-        .nome(nome)
-         .dataNascimento(dataNascimento)
+   public Entregador build() {
+
+       return Entregador.builder()
+               .nome(nome)
+               .dataNascimento(dataNascimento)
                .cpf(cpf)
                .foneCelular(foneCelular)
                .foneFixo(foneFixo)
@@ -62,8 +69,5 @@ public class EntregadorRequest {
                .enderecoComplemento(enderecoComplemento)
                .ativo(ativo)
                .build();
-
-    }
-
+   }
 }
-

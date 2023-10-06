@@ -8,7 +8,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import br.com.ifpe.oxefood.modelo.produto.Produto;
+//import br.com.ifpe.oxefood.modelo.cliente.Produto;
+
+import br.com.ifpe.oxefood.modelo.produto.Produto;
 
 
 
@@ -47,5 +49,15 @@ public class ProdutoService {
       produto.setVersao(produto.getVersao() + 1);
       repository.save(produto);
   }
+
+  @Transactional
+   public void delete(Long id) {
+
+       Produto produto = repository.findById(id).get();
+       produto.setHabilitado(Boolean.FALSE);
+       produto.setVersao(produto.getVersao() + 1);
+
+       repository.save(produto);
+   }
 
 }

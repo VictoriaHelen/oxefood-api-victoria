@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProdutoRequest {
 
+    private Long idCategoria;
+
     private String titulo;
 
     private int codigoProduto;

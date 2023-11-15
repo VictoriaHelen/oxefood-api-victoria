@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 
 //import br.com.ifpe.oxefood.modelo.cliente.Produto;
 
-import br.com.ifpe.oxefood.modelo.produto.Produto;
-
-
+//import br.com.ifpe.oxefood.modelo.produto.Produto;
 
 @Service
 public class ProdutoService {
@@ -20,16 +18,17 @@ public class ProdutoService {
     private ProdutoRepository repository;
 
     @Transactional
-    public Produto save(Produto produto){
+    public Produto save(Produto produto) {
 
-    produto.setHabilitado(Boolean.TRUE);
-    produto.setVersao(1L);
-    produto.setDataCriacao(LocalDate.now());
-    return repository.save(produto);
+        produto.setHabilitado(Boolean.TRUE);
+        produto.setVersao(1L);
+        produto.setDataCriacao(LocalDate.now());
+        return repository.save(produto);
 
     }
-     public List<Produto> findAll() {
-  
+
+    public List<Produto> findAll() {
+
         return repository.findAll();
     }
 
@@ -37,27 +36,28 @@ public class ProdutoService {
 
         return repository.findById(id).get();
     }
-     @Transactional
+
+    @Transactional
     public void update(Long id, Produto produtoAlterado) {
-      Produto produto = repository.findById(id).get();
-      produto.setTitulo(produtoAlterado.getTitulo());
-      produto.setCodigoProduto(produtoAlterado.getCodigoProduto());
-      produto.setDescricao(produtoAlterado.getDescricao());
-      produto.setValorUnitario(produtoAlterado.getValorUnitario());
-      produto.setTempMin(produtoAlterado.getTempMin());
-	    
-      produto.setVersao(produto.getVersao() + 1);
-      repository.save(produto);
-  }
+        Produto produto = repository.findById(id).get();
+        produto.setTitulo(produtoAlterado.getTitulo());
+        produto.setCodigoProduto(produtoAlterado.getCodigoProduto());
+        produto.setDescricao(produtoAlterado.getDescricao());
+        produto.setValorUnitario(produtoAlterado.getValorUnitario());
+        produto.setTempMin(produtoAlterado.getTempMin());
 
-  @Transactional
-   public void delete(Long id) {
+        produto.setVersao(produto.getVersao() + 1);
+        repository.save(produto);
+    }
 
-       Produto produto = repository.findById(id).get();
-       produto.setHabilitado(Boolean.FALSE);
-       produto.setVersao(produto.getVersao() + 1);
+    @Transactional
+    public void delete(Long id) {
 
-       repository.save(produto);
-   }
+        Produto produto = repository.findById(id).get();
+        produto.setHabilitado(Boolean.FALSE);
+        produto.setVersao(produto.getVersao() + 1);
+
+        repository.save(produto);
+    }
 
 }

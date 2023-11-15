@@ -2,6 +2,8 @@ package br.com.ifpe.oxefood.api.cliente;
 
 import java.util.List;
 
+//import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,17 +27,18 @@ import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 public class ClienteController {
 
     @Autowired
-   private ClienteService clienteService;
+    private ClienteService clienteService;
 
-   @PostMapping
-   public ResponseEntity<Cliente> save(@RequestBody  ClienteRequest request) {
+    @PostMapping
+    public ResponseEntity<Cliente> save(@RequestBody ClienteRequest request) {
 
-       Cliente cliente = clienteService.save(request.build());
-       return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
-   }
+        Cliente cliente = clienteService.save(request.build());
+        return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
+    }
+
     @GetMapping
     public List<Cliente> findAll() {
-  
+
         return clienteService.findAll();
     }
 
@@ -44,18 +47,19 @@ public class ClienteController {
 
         return clienteService.findById(id);
     }
-  @PutMapping("/{id}")
-   public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody ClienteRequest request) {
 
-       clienteService.update(id, request.build());
-       return ResponseEntity.ok().build();
-   }
+    @PutMapping("/{id}")
+    public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody ClienteRequest request) {
+
+        clienteService.update(id, request.build());
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/{id}")
-   public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-       clienteService.delete(id);
-       return ResponseEntity.ok().build();
-   }
-
+        clienteService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

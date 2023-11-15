@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 //import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 
-public interface ClienteRepository extends JpaRepository<Cliente,Long> {
-    
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+
 }
